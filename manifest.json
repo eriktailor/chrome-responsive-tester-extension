@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Tailwind Responsive Tester",
+  "version": "1.0",
+  "icons": {
+    "128": "icon.png"
+  },
+
+  "description": "Teszteld az oldalad reszponzivitását egyszerre több nézeten.",
+ "action": {},
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "storage"
+  ]
+}
