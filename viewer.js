@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('framesContainer');
 
   // 1. Define your default URL here
-  const defaultURL = 'http://thaimasszazscentrum-v2.test'; 
+  const defaultURL = 'https://thaimasszazscentrum-v2.test'; 
 
   // 2. Automatically fill the input field so you see what is loaded
   input.value = defaultURL;
