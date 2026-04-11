@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('framesContainer');
-  const BREAKPOINTS = [350, 640, 768, 1024, 1280, 1536];
+  const BREAKPOINTS = [300, 350, 640, 768, 1024, 1280, 1536];
 
   chrome.storage.sync.get({ defaultUrl: '' }, (items) => {
     buildFrames(BREAKPOINTS, items.defaultUrl || '');
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'lg',  min: 1024 },
     { name: 'md',  min: 768  },
     { name: 'sm',  min: 640  },
+    { name: 'xs',  min: 350  },
   ];
 
   function twBreakpoint(w) {
