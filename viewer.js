@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function makeLabel(w, h) {
     const bp = twBreakpoint(w);
-    return `${Math.round(w)}px × ${Math.round(h)}px${bp ? ` <span class="bp-label">(${bp})</span>` : ''}`;
+    return `${Math.round(w)}px${bp ? ` <span class="bp-label">(${bp})</span>` : ''}`;
   }
 
   function buildFrames(widths, startUrl) {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       outer.className = 'frame-outer';
 
       const title = document.createElement('h3');
-      title.innerHTML = makeLabel(width, 800);
+      title.innerHTML = makeLabel(width, 0);
 
       const wrapper = document.createElement('div');
       wrapper.className = 'frame-wrapper';
