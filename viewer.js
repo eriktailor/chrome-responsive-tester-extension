@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
     buildFrames(BREAKPOINTS, items.defaultUrl || '');
   });
 
+  const TW_BREAKPOINTS = [
+    { name: '2xl', min: 1536 },
+    { name: 'xl',  min: 1280 },
+    { name: 'lg',  min: 1024 },
+    { name: 'md',  min: 768  },
+    { name: 'sm',  min: 640  },
+  ];
+
+  function twBreakpoint(w) {
+    const bp = TW_BREAKPOINTS.find(b => w >= b.min);
+    return bp ? bp.name : null;
+  }
+
+  function makeLabel(w, h) {
+    const bp = twBreakpoint(w);
+    return `${Math.round(w)}px × ${Math.round(h)}px${bp ? ` <span class="bp-label">(${bp})</span>` : ''}`;
+  }
+
   function buildFrames(widths, startUrl) {
     container.innerHTML = '';
     widths.forEach(width => {
@@ -13,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       outer.className = 'frame-outer';
 
       const title = document.createElement('h3');
-      title.textContent = `${width}px`;
+      title.innerHTML = makeLabel(width, 800);
 
       const wrapper = document.createElement('div');
       wrapper.className = 'frame-wrapper';
@@ -43,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const newH = Math.max(200, startH + e.clientY - startY);
           wrapper.style.width = newW + 'px';
           wrapper.style.height = newH + 'px';
-          title.textContent = `${Math.round(newW)}px × ${Math.round(newH)}px`;
+          title.innerHTML = makeLabel(newW, newH);
         }
 
         function onMouseUp() {
