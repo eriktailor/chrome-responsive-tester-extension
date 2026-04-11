@@ -7,11 +7,13 @@
   },
 
   "description": "Teszteld az oldalad reszponzivitását egyszerre több nézeten.",
- "action": {},
+ "action": {
+    "default_popup": "options.html"
+  },
   "background": {
     "service_worker": "background.js"
   },
-  "options_page": "options.html",
+
   "permissions": [
     "storage"
   ]
