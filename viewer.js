@@ -3,19 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('urlInput');
   const container = document.getElementById('framesContainer');
 
-  // 1. Define your default URL here
-  const defaultURL = 'https://thaimasszazscentrum-v2.test'; 
-
-  // 2. Automatically fill the input field so you see what is loaded
-  input.value = defaultURL;
-
-  // Fetch breakpoints from storage
+  // Fetch breakpoints and default URL from storage
   chrome.storage.sync.get({
-    breakpoints: '320, 500, 660, 950, 1100, 1300, 1536'
+    breakpoints: '320, 500, 660, 950, 1100, 1300, 1536',
+    defaultUrl: ''
   }, (items) => {
+    const startUrl = items.defaultUrl || 'https://thaimasszazscentrum-v2.test';
+    input.value = startUrl;
     const widths = items.breakpoints.split(',').map(w => w.trim());
-    // Pass the default URL into the build function
-    buildFrames(widths, defaultURL); 
+    buildFrames(widths, startUrl);
   });
 
   function buildFrames(widths, startUrl) {
