@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('urlForm');
-  const input = document.getElementById('urlInput');
   const container = document.getElementById('framesContainer');
 
   // Fetch breakpoints and default URL from storage
@@ -9,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultUrl: ''
   }, (items) => {
     const startUrl = items.defaultUrl || 'https://thaimasszazscentrum-v2.test';
-    input.value = startUrl;
     const widths = items.breakpoints.split(',').map(w => w.trim());
     buildFrames(widths, startUrl);
   });
@@ -34,21 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(wrapper);
     });
   }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let url = input.value.trim();
-    
-    // Ha nincs http vagy https protokoll megadva, kiegészítjük (hasznos lokális .test domaineknél)
-    if (url && !/^https?:\/\//i.test(url)) {
-      url = 'http://' + url;
-    }
-
-    if (url) {
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        iframe.src = url;
-      });
-    }
-  });
 });

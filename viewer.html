@@ -5,20 +5,13 @@
   <title>Responsive Tester</title>
   <style>
     body { font-family: sans-serif; padding: 20px; background: #27282b; margin: 0; }
-    #topbar { margin-bottom: 20px; text-align: center; }
-    #urlInput { width: 60%; padding: 10px; font-size: 1.2em; border: 1px solid #ccc; border-radius: 4px; }
     #framesContainer { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; align-items: flex-start; }
     .frame-wrapper h3 { color: white; margin: 0 0 10px 0; font-size: 1rem; text-align: center; }
-    iframe { border: 1px solid #aaaaaa67; background: #fff; height: 800px; }
+    iframe { border: 1px solid #aaaaaa67; background: #fff; height: 94vh; }
   </style>
 </head>
 <body>
-  <div id="topbar">
-    <form id="urlForm">
-      <input type="text" id="urlInput" placeholder="Írd be a weblap címét (pl. valami.test) és nyomj Entert...">
-    </form>
-  </div>
-  <div id="framesContainer"></div>
+<div id="framesContainer"></div>
 
   <script src="viewer.js"></script>
 </body>
