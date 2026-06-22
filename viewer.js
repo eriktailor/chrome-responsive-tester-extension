@@ -2,8 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('framesContainer');
   const BREAKPOINTS = [300, 350, 640, 768, 1024, 1280, 1536];
 
+  function formatUrl(url) {
+    if (!url) return '';
+    url = url.trim();
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
+    const isLocal = /^localhost(:\d+)?$/i.test(url) || 
+                    /^127\.\d+\.\d+\.\d+(:\d+)?$/i.test(url) || 
+                    /\.local(:\d+)?$/i.test(url);
+    return (isLocal ? 'http://' : 'https://') + url;
+  }
+
   chrome.storage.sync.get({ defaultUrl: '' }, (items) => {
-    buildFrames(BREAKPOINTS, items.defaultUrl || '');
+    const formattedUrl = formatUrl(items.defaultUrl);
+    buildFrames(BREAKPOINTS, formattedUrl);
   });
 
   const TW_BREAKPOINTS = [
